@@ -20,8 +20,8 @@ sudo yum update --assumeyes
 # Download and install Code Server
 # sudo npm install -g --unsafe-perm code-server
 curl -fsSL https://code-server.dev/install.sh -o /tmp/install.sh
-chmod +x /tmp/install.sh
-/tmp/install.sh
+sudo chmod +x /tmp/install.sh
+sudo /tmp/install.sh
 
 
 
