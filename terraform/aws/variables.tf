@@ -30,10 +30,6 @@ variable "aws_ami_id" {
   default     = ""
 }
 
-variable "origin" {
-  description = "habitat origin to use for packages in the habitat_managed_cookbook"
-}
-
 ////////////////////////////////
 // Object Tags
 
@@ -150,7 +146,7 @@ variable "workstation_user" {
 
 variable "workstation_user_password" {
   description = "SSH User password for AMI given by ami_filter"
-  default     = "Cod3Can!"
+  default     = "L0gDN4!"
 }
 
 

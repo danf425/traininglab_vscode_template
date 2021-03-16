@@ -1,59 +1,42 @@
 ////////////////////////////////
 // AWS Connection
 
-aws_region = "us-east-2"
-
-aws_profile = "solutions-architects"
-
+aws_region = "us-east-1"
+aws_profile = "default"
 aws_credentials_file = "~/.aws/credentials"
-
-aws_key_pair_file = "~/.ssh/NAME.pem"
-
-aws_key_pair_name = "KEYPAIRNAME"
-
-origin = "chef-demo"
+aws_key_pair_file = "~/.ssh/YOURPRIVATEPEM"
+aws_key_pair_name = "YOURPRIVATEPEMNAME"
 
 ////////////////////////////////
 // Object Tags
 
-tag_customer = "A-Customer"
-
-tag_project = "Project-Name"
-
-tag_name = "Your-Name"    # No Spaces
-
-tag_dept = "Department"
-
-tag_contact = "email@chef.io"
-
-tag_application = "Automate"
-
+tag_customer = "selabtest"
+tag_project = "selabtest"
+tag_name = "selabtest"    # No Spaces
+tag_dept = "selabtest"
+tag_contact = "selabtest"
+tag_application = "selabtest"
 tag_ttl = "2"
 
 ////////////////////////////////
 // Workstation Config
 
 workstation_count = "2"       # Maximum of 99 due to AWS Load Balancer limits.
-
-workstation_dns_prefix = "PREFIX"   # Gets added the workstation public DNS - EX. PREFIX-workstation-1.chef-demo.com
-
-code_server_password = "Cod3Can!"
+workstation_dns_prefix = "danf"   # Gets added the workstation public DNS - EX. PREFIX-workstation-1.chef-demo.com
+workstation_user_password = "L0gDN4!"
 
 ////////////////////////////////
 // Automate Config
 // 
 
-automate_hostname = "yourname-a2.chef-demo.com"
-
-automate_user_password = "Cod3Can!"
-
-automate_license = "AUTOMATELICENSE"
-
+automate_hostname = "lab.us-east-1.logdna.net"
+automate_user_password = "L0gDN4!"
 
 // NOTE: If you have an acm cert and r53 managed hosted zone, you
 // can use chef_automate_alb.tf.example to build out an ALB with SSL
 // and DNS via R53.
 // ** You do not need to set custom ssl key and chain in this scenario **
 
-automate_alb_acm_matcher = "*.chef-demo.com"
-automate_alb_r53_matcher = "chef-demo.com."
+automate_alb_acm_matcher = "*.logdna.net"
+#automate_alb_r53_matcher = "logdna.net"
+automate_alb_r53_matcher = "logdna.net"
