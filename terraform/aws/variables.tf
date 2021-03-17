@@ -80,54 +80,54 @@ variable "platform" {
 }
 
 ////////////////////////////////
-// Chef Automate
+// Training Lab
 
 variable "channel" {
   default     = "current"
   description = "channel is the habitat channel which will be used for installing A2"
 }
 
-variable "automate_hostname" {
-  description = "automate_hostname is the hostname which will be given to your A2 instance"
+variable "lab_hostname" {
+  description = "lab_hostname is the hostname which will be given to your A2 instance"
 }
 
-variable "automate_license" {
+variable "lab_license" {
   default     = ""
-  description = "automate_license is the license key for your A2 installation"
+  description = "lab_license is the license key for your A2 installation"
 }
 
-variable "automate_alb_acm_matcher" {
+variable "lab_alb_acm_matcher" {
   default     = "*.workshops.learn.chef.io"
-  description = "Matcher to look up the ACM cert for the ALB (when using chef_automate_alb.tf"
+  description = "Matcher to look up the ACM cert for the ALB (when using training_lab_alb.tf"
 }
 
-variable "automate_alb_r53_matcher" {
+variable "lab_alb_r53_matcher" {
   default     = "workshops.learn.chef.io."
   description = "Matcher to find the r53 zone"
 }
 
-variable "automate_custom_ssl" {
+variable "lab_custom_ssl" {
   default     = "false"
-  description = "Enable to configure automate with the below certificate"
+  description = "Enable to configure lab with the below certificate"
 }
 
-variable "automate_custom_ssl_private_key" {
+variable "lab_custom_ssl_private_key" {
   default     = "Paste private key here"
-  description = "automate_private_key is the SSL private key that will be used to congfigure HTTPS for A2"
+  description = "lab_private_key is the SSL private key that will be used to congfigure HTTPS for A2"
 }
 
-variable "automate_custom_ssl_cert_chain" {
+variable "lab_custom_ssl_cert_chain" {
   default     = "Paste certificate chain here"
-  description = "automate_cert_chain is the SSL certificate chain that will be used to congfigure HTTPS for A2"
+  description = "lab_cert_chain is the SSL certificate chain that will be used to congfigure HTTPS for A2"
 }
 
-variable "automate_server_instance_type" {
+variable "lab_server_instance_type" {
   default     = "m4.xlarge"
-  description = "automate_server_instance_type is the AWS instance type to be used for A2"
+  description = "lab_server_instance_type is the AWS instance type to be used for A2"
 }
 
-variable "automate_user_password" {
-  description = "password for all automate user accounts"
+variable "lab_user_password" {
+  description = "password for all lab user accounts"
 }
 
 ////////////////////////////////
@@ -156,7 +156,7 @@ variable "workstation_type" {
 }
 
 variable "workstation_count" {
-  description = "Number of workstation (student) instances to create. Usually matches user_count for number of Automate users to add."
+  description = "Number of workstation (student) instances to create. Usually matches user_count for number of lab users to add."
 }
 
 variable "workstation_volume_size" {

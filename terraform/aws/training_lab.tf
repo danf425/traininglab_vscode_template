@@ -1,6 +1,6 @@
-resource "aws_security_group" "chef_automate" {
-  name        = "chef_automate_${random_id.instance_id.hex}"
-  description = "Chef Automate Server"
+resource "aws_security_group" "training_lab" {
+  name        = "training_lab_${random_id.instance_id.hex}"
+  description = "Training Lab"
   vpc_id      = aws_vpc.habmgmt-vpc.id
 
   tags = {
@@ -22,7 +22,7 @@ resource "aws_security_group_rule" "ingress_allow_22_tcp_all" {
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.chef_automate.id
+  security_group_id = aws_security_group.training_lab.id
 }
 
 /////////////////////////
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "ingress_allow_8000_tcp" {
   to_port                  = 8000
   protocol                 = "tcp"
   cidr_blocks              = ["0.0.0.0/0"]
-  security_group_id        = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
 }
 
 resource "aws_security_group_rule" "ingress_allow_8080_tcp" {
@@ -42,7 +42,7 @@ resource "aws_security_group_rule" "ingress_allow_8080_tcp" {
   to_port                  = 8080
   protocol                 = "tcp"
   cidr_blocks              = ["0.0.0.0/0"]
-  security_group_id        = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
 }
 
 resource "aws_security_group_rule" "ingress_allow_8443_tcp" {
@@ -51,7 +51,7 @@ resource "aws_security_group_rule" "ingress_allow_8443_tcp" {
   to_port                  = 8443
   protocol                 = "tcp"
   cidr_blocks              = ["0.0.0.0/0"]
-  security_group_id        = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
 }
 
 resource "aws_security_group_rule" "ingress_allow_9000_tcp" {
@@ -60,7 +60,7 @@ resource "aws_security_group_rule" "ingress_allow_9000_tcp" {
   to_port                  = 9000
   protocol                 = "tcp"
   cidr_blocks              = ["0.0.0.0/0"]
-  security_group_id        = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
 }
 
 resource "aws_security_group_rule" "ingress_allow_9632_tcp" {
@@ -69,7 +69,7 @@ resource "aws_security_group_rule" "ingress_allow_9632_tcp" {
   to_port                  = 9632
   protocol                 = "tcp"
   cidr_blocks              = ["0.0.0.0/0"]
-  security_group_id        = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
 }
 
 /////////////////////////
@@ -80,8 +80,8 @@ resource "aws_security_group_rule" "ingress_allow_9631_tcp" {
   from_port                = 9631
   to_port                  = 9631
   protocol                 = "tcp"
-  security_group_id        = aws_security_group.chef_automate.id
-  source_security_group_id = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
+  source_security_group_id = aws_security_group.training_lab.id
 }
 
 # Allow Habitat Supervisor http communication udp
@@ -90,8 +90,8 @@ resource "aws_security_group_rule" "ingress_allow_9631_udp" {
   from_port                = 9631
   to_port                  = 9631
   protocol                 = "udp"
-  security_group_id        = aws_security_group.chef_automate.id
-  source_security_group_id = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
+  source_security_group_id = aws_security_group.training_lab.id
 }
 
 # Allow Habitat Supervisor ZeroMQ communication tcp
@@ -100,8 +100,8 @@ resource "aws_security_group_rule" "ingress_9638_tcp" {
   from_port                = 9638
   to_port                  = 9638
   protocol                 = "tcp"
-  security_group_id        = aws_security_group.chef_automate.id
-  source_security_group_id = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
+  source_security_group_id = aws_security_group.training_lab.id
 }
 
 # Allow Habitat Supervisor ZeroMQ communication udp
@@ -110,70 +110,70 @@ resource "aws_security_group_rule" "ingress_allow_9638_udp" {
   from_port                = 9638
   to_port                  = 9638
   protocol                 = "udp"
-  security_group_id        = aws_security_group.chef_automate.id
-  source_security_group_id = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
+  source_security_group_id = aws_security_group.training_lab.id
 }
 
 ////////////////////////////////
-// Chef Automate Rules
+// Training Lab Rules
 # HTTP (nginx)
-resource "aws_security_group_rule" "ingress_chef_automate_allow_80_tcp" {
+resource "aws_security_group_rule" "ingress_training_lab_allow_80_tcp" {
   type              = "ingress"
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.chef_automate.id
+  security_group_id = aws_security_group.training_lab.id
 }
 
 # HTTPS (nginx)
-resource "aws_security_group_rule" "ingress_chef_automate_allow_443_tcp" {
+resource "aws_security_group_rule" "ingress_training_lab_allow_443_tcp" {
   type              = "ingress"
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.chef_automate.id
+  security_group_id = aws_security_group.training_lab.id
 }
 
 # Allow etcd communication
-resource "aws_security_group_rule" "ingress_chef_automate_allow_2379_tcp" {
+resource "aws_security_group_rule" "ingress_training_lab_allow_2379_tcp" {
   type                     = "ingress"
   from_port                = 2379
   to_port                  = 2380
   protocol                 = "tcp"
-  security_group_id        = aws_security_group.chef_automate.id
-  source_security_group_id = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
+  source_security_group_id = aws_security_group.training_lab.id
 }
 
 # Allow elasticsearch clients
-resource "aws_security_group_rule" "ingress_chef_automate_allow_9200_to_9400_tcp" {
+resource "aws_security_group_rule" "ingress_training_lab_allow_9200_to_9400_tcp" {
   type                     = "ingress"
   from_port                = 9200
   to_port                  = 9400
   protocol                 = "tcp"
-  security_group_id        = aws_security_group.chef_automate.id
-  source_security_group_id = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
+  source_security_group_id = aws_security_group.training_lab.id
 }
 
 # Allow postgres connections
-resource "aws_security_group_rule" "ingress_chef_automate_allow_5432_tcp" {
+resource "aws_security_group_rule" "ingress_training_lab_allow_5432_tcp" {
   type                     = "ingress"
   from_port                = 5432
   to_port                  = 5432
   protocol                 = "tcp"
-  security_group_id        = aws_security_group.chef_automate.id
-  source_security_group_id = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
+  source_security_group_id = aws_security_group.training_lab.id
 }
 
 # Allow leaderel connections
-resource "aws_security_group_rule" "ingress_chef_automate_allow_7331_tcp" {
+resource "aws_security_group_rule" "ingress_training_lab_allow_7331_tcp" {
   type                     = "ingress"
   from_port                = 7331
   to_port                  = 7331
   protocol                 = "tcp"
-  security_group_id        = aws_security_group.chef_automate.id
-  source_security_group_id = aws_security_group.chef_automate.id
+  security_group_id        = aws_security_group.training_lab.id
+  source_security_group_id = aws_security_group.training_lab.id
 }
 
 # Egress: ALL
@@ -183,5 +183,5 @@ resource "aws_security_group_rule" "linux_egress_allow_0-65535_all" {
   to_port           = 0
   protocol          = "-1"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.chef_automate.id
+  security_group_id = aws_security_group.training_lab.id
 }

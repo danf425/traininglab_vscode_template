@@ -13,7 +13,7 @@ resource "aws_lb_target_group" "workstation" {
   port                 = "8080"
   protocol             = "HTTP"
 
-  depends_on = ["aws_lb.chef_automate"]
+  depends_on = ["aws_lb.training_lab"]
 
   lifecycle {
     create_before_destroy = true
@@ -32,7 +32,7 @@ resource "aws_lb_target_group" "workstation" {
 
 resource "aws_lb_listener_rule" "workstation" {
   count               = var.workstation_count
-  listener_arn        = "${aws_lb_listener.chef_automate.arn}"
+  listener_arn        = "${aws_lb_listener.training_lab.arn}"
   priority            = "${count.index + 100}"
 
   action {
@@ -53,7 +53,7 @@ resource "aws_route53_record" "workstation" {
   name    = "${var.workstation_dns_prefix}-workstation-${count.index + 1}"
   type    = "CNAME"
   ttl     = "30"
-  records = [aws_lb.chef_automate.dns_name]
+  records = [aws_lb.training_lab.dns_name]
 }
 
 // Render template file for code-server.service with code_server_password variable
@@ -83,7 +83,7 @@ resource "aws_instance" "workstation" {
   subnet_id              = aws_subnet.habmgmt-subnet-a.id
   instance_type          = var.workstation_type
   ebs_optimized          = false
-  vpc_security_group_ids = ["${aws_security_group.chef_automate.id}"]
+  vpc_security_group_ids = ["${aws_security_group.training_lab.id}"]
 
   root_block_device {
     delete_on_termination = true
