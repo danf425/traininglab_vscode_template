@@ -1,3 +1,11 @@
+////////////////////////////////
+// AWS Connection
+
+aws_region = "us-east-1"
+aws_profile = "default"
+aws_credentials_file = "~/.aws/credentials"
+aws_key_pair_file = "~/.ssh/KEYPAIR.pem"
+aws_key_pair_name = "KEYPAIRNAME"
 
 ////////////////////////////////
 // Object Tags
