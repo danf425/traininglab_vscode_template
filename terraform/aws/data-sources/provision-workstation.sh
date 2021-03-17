@@ -45,13 +45,13 @@ echo "i made it this far 2"
 # echo "i made it this far 3"
 
 
-# Add Chef User in Wheel, Root & Docker Groups. No password for sudo
-sudo useradd chef -G wheel,root
+# Add User in Wheel, Root & Docker Groups. No password for sudo
+sudo useradd someuser -G wheel,root
 #,docker
 echo "i made it this far 4"
 
-sudo sh -c "echo 'chef ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
-echo $1 | sudo passwd chef --stdin
+sudo sh -c "echo 'someuser ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
+echo $1 | sudo passwd someuser --stdin
 sudo sed -i "/^PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 sudo systemctl restart sshd.service
 echo "i made it this far 5"

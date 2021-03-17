@@ -2,10 +2,10 @@
 Description=Code Server
 
 [Service]
-User=chef
-Group=chef
+User=someuser
+Group=someuser
 Environment=PASSWORD=${workstation_user_password}
-ExecStart=/usr/bin/code-server /home/chef
+ExecStart=/usr/bin/code-server /home/someuser
 
 [Install]
 WantedBy=default.target

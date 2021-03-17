@@ -29,12 +29,12 @@ sudo /tmp/install.sh
 sudo mv /tmp/code-server.service /etc/systemd/system/code-server.service
 
 # Provision Settings file for code server
-sudo mkdir -p /home/chef/.local/share/code-server/User
-sudo mkdir -p /home/chef/.config/code-server
-sudo mv /tmp/code-server-settings.json /home/chef/.local/share/code-server/User/settings.json
-sudo mv /tmp/config.yaml /home/chef/.config/code-server/config.yaml
-sudo chown -R chef:chef /home/chef/.local
-sudo chown -R chef:chef /home/chef/.config
+sudo mkdir -p /home/someuser/.local/share/code-server/User
+sudo mkdir -p /home/someuser/.config/code-server
+sudo mv /tmp/code-server-settings.json /home/someuser/.local/share/code-server/User/settings.json
+sudo mv /tmp/config.yaml /home/someuser/.config/code-server/config.yaml
+sudo chown -R someuser:someuser /home/someuser/.local
+sudo chown -R someuser:someuser /home/someuser/.config
 
 
 
