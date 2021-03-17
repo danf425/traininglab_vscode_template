@@ -12,17 +12,17 @@ tag_ttl = "2"
 
 ////////////////////////////////
 // Workstation Config
-
 workstation_count = "2"       # Maximum of 99 due to AWS Load Balancer limits.
 workstation_dns_prefix = "danf"   # Gets added the workstation public DNS - EX. PREFIX-workstation-1.chef-demo.com
-workstation_user_password = "L0gDN4!"
+workstation_user_password = "DanDanDan"
 
 ////////////////////////////////
 // lab Config
 // 
 
 lab_hostname = "lab.us-east-1.logdna.net"
-lab_user_password = "L0gDN4!"
+lab_user_password = "DanDanDan"
+
 
 // NOTE: If you have an acm cert and r53 managed hosted zone, you
 // can use chef_lab_alb.tf.example to build out an ALB with SSL
