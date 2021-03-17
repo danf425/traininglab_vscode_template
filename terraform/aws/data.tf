@@ -31,26 +31,6 @@ most_recent = true
   }
 }
 
-
-#  "centos7" {
-#   most_recent = true
-
-#   filter {
-#     name   = "name"
-#     values = ["chef-highperf-centos7-*"]
-#   }
-
-#   filter {
-#     name   = "virtualization-type"
-#     values = ["hvm"]
-#   }
-
-#   owners = ["446539779517"]
-# }
-
-
-
-
 data "aws_ami" "ubuntu" {
   most_recent = true
 

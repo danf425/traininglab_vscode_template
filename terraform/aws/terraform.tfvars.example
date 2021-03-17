@@ -1,11 +1,3 @@
-////////////////////////////////
-// AWS Connection
-
-aws_region = "us-east-1"
-aws_profile = "default"
-aws_credentials_file = "~/.aws/credentials"
-aws_key_pair_file = "~/.ssh/YOURPRIVATEPEM"
-aws_key_pair_name = "YOURPRIVATEPEMNAME"
 
 ////////////////////////////////
 // Object Tags
@@ -26,17 +18,17 @@ workstation_dns_prefix = "danf"   # Gets added the workstation public DNS - EX. 
 workstation_user_password = "L0gDN4!"
 
 ////////////////////////////////
-// Automate Config
+// lab Config
 // 
 
-automate_hostname = "lab.us-east-1.logdna.net"
-automate_user_password = "L0gDN4!"
+lab_hostname = "lab.us-east-1.logdna.net"
+lab_user_password = "L0gDN4!"
 
 // NOTE: If you have an acm cert and r53 managed hosted zone, you
-// can use chef_automate_alb.tf.example to build out an ALB with SSL
+// can use chef_lab_alb.tf.example to build out an ALB with SSL
 // and DNS via R53.
 // ** You do not need to set custom ssl key and chain in this scenario **
 
-automate_alb_acm_matcher = "*.logdna.net"
-#automate_alb_r53_matcher = "logdna.net"
-automate_alb_r53_matcher = "logdna.net"
+lab_alb_acm_matcher = "*.logdna.net"
+#lab_alb_r53_matcher = "logdna.net"
+lab_alb_r53_matcher = "logdna.net"
